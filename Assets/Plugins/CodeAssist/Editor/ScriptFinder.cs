@@ -159,14 +159,20 @@ namespace Meryel.UnityCodeAssist.Editor
 
             try
             {
-                // Object.FindObjectOfType will not return Assets (meshes, textures, prefabs, ...) or inactive objects
+                // UnityEngine.Object.FindObjectOfType is deprecated in new versions of Unity
+#if UNITY_2022_3 || UNITY_2023_1_OR_NEWER
+                // Object.FindAnyObjectOfType doesn't return Assets (for example meshes, textures, or prefabs), or inactive objects. It also doesn't return objects that have HideFlags.DontSave set.
+                obj = UnityEngine.Object.FindAnyObjectByType(type);
+#else
+                // Object.FindObjectOfType will not return Assets (meshes, textures, prefabs, ...) or inactive objects. It will not return an object that has HideFlags.DontSave set.
                 obj = UnityEngine.Object.FindObjectOfType(type);
+#endif
             }
             catch (Exception ex)
             {
                 //var isMonoBehaviour = type.IsSubclassOf(typeof(MonoBehaviour));
                 //var isScriptableObject = type.IsSubclassOf(typeof(ScriptableObject));
-                Serilog.Log.Warning(ex, "FindObjectOfType failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(), isMonoBehaviour, isScriptableObject);
+                Serilog.Log.Warning(ex, "FindObjectOfType/FindAnyObjectByType failed for {Type}, mb:{isMB}, so:{isSO}", type.ToString(), isMonoBehaviour, isScriptableObject);
             }
 
             obj = getObjectToSend(obj, type);
