@@ -5,7 +5,6 @@ public class GameHandler : MonoBehaviour {
 
     public static GameHandler Instance { get; private set; }
 
-    private const float WAITING_FOR_START_TIMER_MAX = .1f;
     private const float COUNTDOWN_FOR_START_TIMER_MAX = 3f;
     private const float GAME_PLAYING_TIMER_MAX = 60f;
 
@@ -17,7 +16,6 @@ public class GameHandler : MonoBehaviour {
     }
 
     private State state;
-    private float waitingForStartTimer = WAITING_FOR_START_TIMER_MAX;
     private float countdownForStartTimer = COUNTDOWN_FOR_START_TIMER_MAX;
     private float gamePlayingTimer = GAME_PLAYING_TIMER_MAX;
     private bool isPauseGame = false;
@@ -43,6 +41,17 @@ public class GameHandler : MonoBehaviour {
     private void Start()
     {
         GameInput.Instance.OnPauseGame += GameInput_OnPauseGame;
+        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, EventArgs e)
+    {
+        // When press interact key in tutorial UI, state will switch to WaitingForStart
+        if (state == State.WaitingForStart)
+        {
+            state = State.CountdownForStart;
+            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void GameInput_OnPauseGame(object sender, EventArgs e)
@@ -55,13 +64,6 @@ public class GameHandler : MonoBehaviour {
         switch (state)
         {
             case State.WaitingForStart:
-                waitingForStartTimer -= Time.deltaTime;
-                if (waitingForStartTimer < 0)
-                {
-                    waitingForStartTimer = WAITING_FOR_START_TIMER_MAX;
-                    state = State.CountdownForStart;
-                    OnStateChanged?.Invoke(this, EventArgs.Empty);
-                }
                 break;
             case State.CountdownForStart:
                 countdownForStartTimer -= Time.deltaTime;
