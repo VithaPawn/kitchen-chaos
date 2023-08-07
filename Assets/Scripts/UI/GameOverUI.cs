@@ -1,12 +1,19 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI deliveryRecipesTotalText;
+    [SerializeField] private Button returnHomeButton;
     [SerializeField] private List<Transform> childList;
     private void Awake()
     {
+        returnHomeButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.MainMenuScene);
+        });
+
         Hide();
     }
 
