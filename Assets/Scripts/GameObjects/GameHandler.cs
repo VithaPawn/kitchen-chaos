@@ -7,7 +7,7 @@ public class GameHandler : MonoBehaviour {
 
     private const float WAITING_FOR_START_TIMER_MAX = .1f;
     private const float COUNTDOWN_FOR_START_TIMER_MAX = 3f;
-    private const float GAME_PLAYING_TIMER_MAX = 20f;
+    private const float GAME_PLAYING_TIMER_MAX = 60f;
 
     public enum State {
         WaitingForStart,
@@ -121,7 +121,6 @@ public class GameHandler : MonoBehaviour {
     public void TogglePauseGame()
     {
         isPauseGame = !isPauseGame;
-        Debug.Log(isPauseGame);
         if (isPauseGame)
         {
             Time.timeScale = 0f;
