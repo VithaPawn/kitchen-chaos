@@ -15,6 +15,11 @@ using System.Xml.Linq;
 #endif
 
 
+#pragma warning disable IDE0005
+using Serilog = Meryel.UnityCodeAssist.Serilog;
+#pragma warning restore IDE0005
+
+
 #nullable enable
 
 
@@ -101,7 +106,13 @@ namespace Meryel.UnityCodeAssist.Editor.Preferences
             }
 
             // Clean <key>_h3320113488 nameing
-            cachedData = cachedData.Select((key) => { return key.Substring(0, key.LastIndexOf("_h", StringComparison.Ordinal)); }).ToArray();
+            //cachedData = cachedData.Select((key) => { return key.Substring(0, key.LastIndexOf("_h", StringComparison.Ordinal)); }).ToArray();
+            for (int i = 0; i < cachedData.Length; i++)
+            {
+                var indexOfSuffix = cachedData[i].LastIndexOf("_h", StringComparison.Ordinal);
+                if (indexOfSuffix >= 0)
+                    cachedData[i] = cachedData[i].Substring(0, indexOfSuffix);
+            }
 
             EncodeAnsiInPlace();
         }

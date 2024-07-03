@@ -6,6 +6,11 @@ using UnityEngine;
 using UnityEditor;
 
 
+#pragma warning disable IDE0005
+using Serilog = Meryel.UnityCodeAssist.Serilog;
+#pragma warning restore IDE0005
+
+
 #nullable enable
 
 
@@ -28,11 +33,20 @@ namespace Meryel.UnityCodeAssist.Editor
 
         static string GetId(UnityEngine.Object? obj)
         {
-            // obj can be null
+            try
+            {
+                // obj can be null
 
-            var globalObjectId = GlobalObjectId.GetGlobalObjectIdSlow(obj);
-            var objectGuid = globalObjectId.ToString();
-            return objectGuid;
+                var globalObjectId = GlobalObjectId.GetGlobalObjectIdSlow(obj);
+                var objectGuid = globalObjectId.ToString();
+                return objectGuid;
+            }
+            catch (Exception ex)
+            {
+                // OnBeforeSerialize of user scripts may raise exception
+                Serilog.Log.Warning(ex, "GetGlobalObjectIdSlow failed for obj {Obj}", obj);
+                return "GlobalObjectId_V1-0-00000000000000000000000000000000-0-0";
+            }
         }
 
         internal static Synchronizer.Model.GameObject? ToSyncModel(this GameObject go, int priority = 0)

@@ -6,6 +6,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 
+#pragma warning disable IDE0005
+using Serilog = Meryel.UnityCodeAssist.Serilog;
+#pragma warning restore IDE0005
+
+
 #nullable enable
 
 
@@ -27,7 +32,7 @@ namespace Meryel.UnityCodeAssist.Editor.Input
             var regexIndentation = new Regex("^\\s*");
 
             var regexString = new Regex("^(\\s+)(\\w+)\\s+\"([a-zA-Z0-9_ ]*)\"\\s+\\(string\\)$");
-            var regexValue = new Regex("^(\\s+)(\\w+)\\s+([0-9.]*)\\s+\\(((bool)|(int)|(float)|(unsigned int))\\)$");
+            var regexValue = new Regex("^(\\s+)(\\w+)\\s+(-?[0-9.]*)\\s+\\(((bool)|(int)|(float)|(unsigned int))\\)$");
             var regexType = new Regex("^(\\s+)(\\w+)\\s+\\((\\w+)\\)$");
 
             var regexVectorSize = new Regex("(\\s+)size\\s+(\\d)+\\s+\\(int\\)");
