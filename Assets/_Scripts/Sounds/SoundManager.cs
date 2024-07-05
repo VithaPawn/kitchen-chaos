@@ -33,10 +33,9 @@ public class SoundManager : MonoBehaviour {
         TrashCounter.OnAnyObjectTrashed += TrashCounter_OnAnyObjectTrashed;
     }
 
-    private void TrashCounter_OnAnyObjectTrashed(object sender, System.EventArgs e)
+    private void TrashCounter_OnAnyObjectTrashed(BaseCounter baseCounter)
     {
-        BaseCounter trashCounter = sender as TrashCounter;
-        PlaySound(audioClipRefsSO.objectDrop, trashCounter.transform.position);
+        PlaySound(audioClipRefsSO.trash, baseCounter.transform.position);
     }
 
     private void BaseCounter_OnDropSomething(object sender, System.EventArgs e)
@@ -50,10 +49,9 @@ public class SoundManager : MonoBehaviour {
     //    PlaySound(audioClipRefsSO.objectPickup, Player.Instance.transform.position);
     //}
 
-    private void CuttingCounter_OnAnyCut(object sender, System.EventArgs e)
+    private void CuttingCounter_OnAnyCut(BaseCounter baseCounter)
     {
-        CuttingCounter cuttingCounter = sender as CuttingCounter;
-        PlaySound(audioClipRefsSO.chop, cuttingCounter.transform.position);
+        PlaySound(audioClipRefsSO.chop, baseCounter.transform.position);
     }
 
     private void DeliveryManager_OnDeliveryFail(object sender, System.EventArgs e)

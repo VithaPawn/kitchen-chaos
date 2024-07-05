@@ -38,7 +38,6 @@ public class DeliveryManager : NetworkBehaviour {
             spawnRecipeTimer += Time.deltaTime;
             if (spawnRecipeTimer >= spawnRecipeTimerMax)
             {
-                Debug.Log("Spawn new waiting recipe in server!");
                 int waitingRecipeIndex = UnityEngine.Random.Range(0, recipeMenuSO.recipeSOList.Count);
                 SpawnNewWaitingRecipeClientRpc(waitingRecipeIndex);
                 spawnRecipeTimer = 0f;

@@ -15,9 +15,9 @@ public class StoveCounterSound : MonoBehaviour {
         stoveCounter.OnStoveRunning += StoveCounter_OnStoveRunning;
     }
 
-    private void StoveCounter_OnStoveRunning(object sender, StoveCounter.OnStoveRunningEventArgs e)
+    private void StoveCounter_OnStoveRunning(StoveCounter.State state)
     {
-        bool PlaySound = e.state != StoveCounter.State.Idle;
+        bool PlaySound = state != StoveCounter.State.Idle;
         if (PlaySound)
         {
             audioSource.Play();
@@ -26,6 +26,5 @@ public class StoveCounterSound : MonoBehaviour {
         {
             audioSource.Stop();
         }
-
     }
 }

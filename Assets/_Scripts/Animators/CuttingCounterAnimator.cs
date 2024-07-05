@@ -15,10 +15,10 @@ public class CuttingCounterAnimator : MonoBehaviour {
 
     private void Start()
     {
-        cuttingCounter.OnCut += ContainerCounter_OnCut;
+        cuttingCounter.OnCut += CuttingCounter_OnCut;
     }
 
-    private void ContainerCounter_OnCut(object sender, System.EventArgs e)
+    private void CuttingCounter_OnCut()
     {
         animator.SetTrigger(name: CUT);
     }

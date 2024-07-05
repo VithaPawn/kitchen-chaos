@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5094550986943213451, guid: e82d4fe18b725a643b94e200842ac693,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2092956459
+      objectReference: {fileID: 0}
     - target: {fileID: 5482335388759428161, guid: e82d4fe18b725a643b94e200842ac693,
         type: 3}
       propertyPath: m_Name
@@ -519,6 +524,8 @@ MonoBehaviour:
   - {fileID: 5347489317765161005}
   - {fileID: 8275692235824317636}
   - {fileID: 269082247564474643}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}
 --- !u!114 &7907613495283351481
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -138,7 +138,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124254412158555651}
+  - component: {fileID: -8295749858759965555}
   - component: {fileID: 3925173601690145047}
+  - component: {fileID: 3312429536127966994}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -164,6 +166,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8295749858759965555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816955818123264989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3630051150
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &3925173601690145047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +206,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89455a3b01bece946b7f4ec54209d3be, type: 2}
   - {fileID: 11400000, guid: c98a3fcfe9444004eb11d842109d9237, type: 2}
   - {fileID: 11400000, guid: 2aff99bd633b9d743ac5a9e701bd6689, type: 2}
+--- !u!114 &3312429536127966994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816955818123264989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a418be5bc4331488fe2bf5ee07a6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5503455689534423086
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790b2348f6f2238489be53a0efcb97f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMode: 0
 --- !u!1001 &657218144622489268
 PrefabInstance:
   m_ObjectHideFlags: 0

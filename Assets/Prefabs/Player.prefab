@@ -72,6 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   KitchentObjectHoldPoint: {fileID: 1217081371822365964}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}
 --- !u!114 &6415297836181953712
 MonoBehaviour:
   m_ObjectHideFlags: 0

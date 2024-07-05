@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(fileName = "AudioClipRefsSO", menuName = "Scriptable Objects/Audio Clip Refs")]
 public class AudioClipRefsSO : ScriptableObject {
     public List<AudioClip> chop;
     public List<AudioClip> deliveryFail;

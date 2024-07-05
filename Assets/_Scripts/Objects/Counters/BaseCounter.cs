@@ -1,10 +1,10 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BaseCounter : MonoBehaviour, IKitchenObjectParent {
+public class BaseCounter : NetworkBehaviour, IKitchenObjectParent {
 
     [SerializeField] private Transform counterTopPoint;
-    //[SerializeField] private SelectedCounterVisual selectedCounterVisual;
 
     private KitchenObject currentKitchenObject;
 
@@ -56,10 +56,8 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent {
         return (currentKitchenObject != null);
     }
 
-    //public virtual void Selected() {
-    //    if (selectedCounterVisual != null)
-    //    {
-    //        selectedCounterVisual.
-    //    }
-    //}
+    public NetworkObject GetNetworkObject()
+    {
+        return NetworkObject;
+    }
 }

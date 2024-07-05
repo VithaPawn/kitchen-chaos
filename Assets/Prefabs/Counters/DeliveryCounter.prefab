@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 7250151036027967660, guid: e82d4fe18b725a643b94e200842ac693,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7250151036027967660, guid: e82d4fe18b725a643b94e200842ac693,
         type: 3}
@@ -956,6 +956,8 @@ MonoBehaviour:
   baseCounter: {fileID: 7279041589630940674}
   visualGameObjectArray:
   - {fileID: 4381965079814830207}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}
 --- !u!4 &453744144671025993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: be1e77e8d4e81bf4292e5b46dc090583,

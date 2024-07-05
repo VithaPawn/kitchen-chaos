@@ -546,6 +546,8 @@ MonoBehaviour:
   - {fileID: 4690912838424163289}
   - {fileID: 4078031449463930919}
   - {fileID: 7224698647288661510}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}
 --- !u!114 &1500797611852447703
 MonoBehaviour:
   m_ObjectHideFlags: 0

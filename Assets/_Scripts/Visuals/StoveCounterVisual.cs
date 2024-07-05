@@ -10,9 +10,9 @@ public class StoveCounterVisual : MonoBehaviour {
         stoveCounter.OnStoveRunning += StoveCounter_OnStoveRunning;
     }
 
-    private void StoveCounter_OnStoveRunning(object sender, StoveCounter.OnStoveRunningEventArgs e)
+    private void StoveCounter_OnStoveRunning(StoveCounter.State state)
     {
-        bool showVisual = e.state == StoveCounter.State.Frying || e.state == StoveCounter.State.Burning;
+        bool showVisual = state == StoveCounter.State.Frying || state == StoveCounter.State.Burning;
         foreach (var visualGameObject in visualGameObjectArray)
         {
             visualGameObject.SetActive(showVisual);

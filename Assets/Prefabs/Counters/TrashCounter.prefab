@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7250151036027967660}
   - component: {fileID: 8476254706829590448}
+  - component: {fileID: 911651229189708583}
   - component: {fileID: 7826251189233811947}
   m_Layer: 0
   m_Name: TrashCounter
@@ -88,6 +89,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &911651229189708583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482335388759428161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1421185283
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &7826251189233811947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,11 +224,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: c4e141bc61e807b4b832b850d92f5fd7,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3890271853778634786}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4e141bc61e807b4b832b850d92f5fd7, type: 3}
 --- !u!1 &2840154797598896993 stripped
 GameObject:
@@ -214,27 +232,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5347070327519736572}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8468296882562864726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: c4e141bc61e807b4b832b850d92f5fd7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5347070327519736572}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3890271853778634786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8468296882562864726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9307cb5021eaf4eafbae1040659b56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseCounter: {fileID: 7826251189233811947}
-  visualGameObjectArray:
-  - {fileID: 2840154797598896993}
 --- !u!4 &8468296882562864727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: c4e141bc61e807b4b832b850d92f5fd7,
@@ -312,7 +309,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: c4e141bc61e807b4b832b850d92f5fd7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3770657478864393362}
   m_SourcePrefab: {fileID: 100100000, guid: c4e141bc61e807b4b832b850d92f5fd7, type: 3}
 --- !u!4 &5718004177158625098 stripped
 Transform:
@@ -320,3 +321,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8136770355706475489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5718004177158625099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: c4e141bc61e807b4b832b850d92f5fd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 8136770355706475489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3770657478864393362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718004177158625099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9307cb5021eaf4eafbae1040659b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseCounter: {fileID: 7826251189233811947}
+  visualGameObjectArray:
+  - {fileID: 2840154797598896993}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}

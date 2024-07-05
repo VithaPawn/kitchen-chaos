@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea721917b604ca4aa576621ab28f246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: c396a6575f9c06a4da49b27645223019, type: 2}
   counterTopPoint: {fileID: 3288831300282562117}
 --- !u!1001 &6603488659099131004
 PrefabInstance:
@@ -256,6 +255,8 @@ MonoBehaviour:
   baseCounter: {fileID: 2928524461235196776}
   visualGameObjectArray:
   - {fileID: 3344967240207425331}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}
 --- !u!4 &7211880338023381207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 0004cb1e11ad014419b943c7da960724,

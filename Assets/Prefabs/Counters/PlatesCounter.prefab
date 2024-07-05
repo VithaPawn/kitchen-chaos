@@ -102,11 +102,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 433585800057296854, guid: e21b499d164095947b7559f0267f0e63, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: e21b499d164095947b7559f0267f0e63,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6769767162606912237}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e21b499d164095947b7559f0267f0e63, type: 3}
 --- !u!1 &7673423650005334103 stripped
 GameObject:
@@ -120,27 +116,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6083278637504229155}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7772604615111216009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: e21b499d164095947b7559f0267f0e63,
-    type: 3}
-  m_PrefabInstance: {fileID: 6083278637504229155}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6769767162606912237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7772604615111216009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9307cb5021eaf4eafbae1040659b56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseCounter: {fileID: 1149707926784521493}
-  visualGameObjectArray:
-  - {fileID: 7673423650005334103}
 --- !u!1001 &6645218771013857698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,7 +132,7 @@ PrefabInstance:
     - target: {fileID: 7250151036027967660, guid: e82d4fe18b725a643b94e200842ac693,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7250151036027967660, guid: e82d4fe18b725a643b94e200842ac693,
         type: 3}
@@ -367,6 +342,8 @@ MonoBehaviour:
   baseCounter: {fileID: 1149707926784521493}
   visualGameObjectArray:
   - {fileID: 7673423650005334103}
+  selectedCounterChanged: {fileID: 11400000, guid: 5cbc08b901187004b96010aa5f0d4836,
+    type: 2}
 --- !u!114 &2520385313373361293
 MonoBehaviour:
   m_ObjectHideFlags: 0

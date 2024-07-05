@@ -7,11 +7,9 @@ public class ProgressBarUI : MonoBehaviour {
     [SerializeField]
     private GameObject gameObjectHasProgress;
 
-    private IHasProgress hasProgress;
-
     private void Start()
     {
-        hasProgress = gameObjectHasProgress.GetComponent<IHasProgress>();
+        IHasProgress hasProgress = gameObjectHasProgress.GetComponent<IHasProgress>();
 
         hasProgress.OnProgressBarChanged += HasProgress_OnProgressBarChanged;
 
@@ -20,11 +18,11 @@ public class ProgressBarUI : MonoBehaviour {
         Hide();
     }
 
-    private void HasProgress_OnProgressBarChanged(object sender, IHasProgress.OnProgressBarChangedEventArgs e)
+    private void HasProgress_OnProgressBarChanged(float progressBarPercentage)
     {
-        imgBar.fillAmount = e.progressBarPercentage;
+        imgBar.fillAmount = progressBarPercentage;
 
-        if (e.progressBarPercentage == 0f || e.progressBarPercentage == 1f)
+        if (progressBarPercentage <= 0f || progressBarPercentage >= 1f)
         {
             Hide();
         }
