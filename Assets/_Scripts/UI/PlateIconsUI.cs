@@ -13,10 +13,10 @@ public class PlateIconsUI : MonoBehaviour {
         plateKitchenObject.OnAddIgredient += PlateKitchenObject_OnAddIgredient;
     }
 
-    private void PlateKitchenObject_OnAddIgredient(object sender, PlateKitchenObject.OnAddIgredientEventArgs e)
+    private void PlateKitchenObject_OnAddIgredient(KitchenObjectSO kitchenObjectSO)
     {
         Transform iconTransform = Instantiate(iconTemplate, transform);
-        iconTransform.GetComponent<PlateIconsSingleUI>().SetPlateIcon(e.KitchenObjectSO);
+        iconTransform.GetComponent<PlateIconsSingleUI>().SetPlateIcon(kitchenObjectSO);
         iconTransform.gameObject.SetActive(true);
     }
 }

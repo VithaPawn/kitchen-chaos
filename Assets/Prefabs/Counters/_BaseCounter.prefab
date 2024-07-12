@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7250151036027967660}
   - component: {fileID: 8476254706829590448}
   - component: {fileID: 5094550986943213451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: _BaseCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2963044478
+  GlobalObjectIdHash: 3780640691
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1

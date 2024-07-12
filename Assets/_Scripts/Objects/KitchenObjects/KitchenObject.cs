@@ -101,11 +101,13 @@ public class KitchenObject : NetworkBehaviour {
         if (this is PlateKitchenObject)
         {
             plateKitchenObject = this as PlateKitchenObject;
+            Debug.Log("This is plate object");
             return true;
         }
         else
         {
             plateKitchenObject = null;
+            Debug.Log("This is not plate object");
             return false;
         }
     }

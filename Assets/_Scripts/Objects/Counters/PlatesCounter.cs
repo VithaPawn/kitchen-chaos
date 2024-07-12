@@ -20,6 +20,7 @@ public class PlatesCounter : BaseCounter {
         plateSpawnTimer = 0f;
         platesAmount = 0;
     }
+
     private void Update()
     {
         if (!IsServer) return;

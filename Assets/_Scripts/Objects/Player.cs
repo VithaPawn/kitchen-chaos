@@ -1,12 +1,13 @@
 using System;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
 public class Player : NetworkBehaviour, IKitchenObjectParent {
-    [SerializeField]
-    private int moveSpeed = 10;
-    [SerializeField]
-    private Transform KitchentObjectHoldPoint;
+    [SerializeField] private int moveSpeed = 10;
+    [SerializeField] private Transform KitchentObjectHoldPoint;
+    [SerializeField] private LayerMask collistionsLayerMask;
+    [SerializeField] private List<Vector3> spawnPositionList;
 
     private readonly float charHeight = 1f;
     private readonly float charRadius = 0.7f;
@@ -20,12 +21,27 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
 
     [Header("Events")]
     [SerializeField] private CounterEventSO selectedCounterChanged;
-    public event EventHandler OnPickupSomething;
+    public event Action OnPickupSomething;
 
     private void Start()
     {
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         GameInput.Instance.OnInteractAlternateAction += GameInput_OnInteractAlternateAction; ;
+    }
+
+    public override void OnDestroy()
+    {
+        GameInput.Instance.OnInteractAction -= GameInput_OnInteractAction;
+        GameInput.Instance.OnInteractAlternateAction -= GameInput_OnInteractAlternateAction;
+        base.OnDestroy();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (IsOwner)
+        {
+            transform.position = spawnPositionList[(int)OwnerClientId];
+        }
     }
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
@@ -68,7 +84,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
         transform.forward = Vector3.Slerp(transform.forward, directionVector, Time.deltaTime * rotationSpeed);
 
         // Handle movement
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * charHeight, charRadius, directionVector, moveDistance);
+        bool canMove = !Physics.BoxCast(transform.position, Vector3.one * charRadius, directionVector, Quaternion.identity, moveDistance, collistionsLayerMask);
         if (canMove)
         {
             transform.position += directionVector * moveDistance;
@@ -84,12 +100,12 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
     private Vector3 GetDirectionVectorForMove(float moveDistance)
     {
         Vector3 directionVector = new Vector3(inputVector.x, 0f, inputVector.y);
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * charHeight, charRadius, directionVector, moveDistance);
+        bool canMove = !Physics.BoxCast(transform.position, Vector3.one * charRadius, directionVector, Quaternion.identity, moveDistance, collistionsLayerMask);
 
         if (!canMove)
         {
             Vector3 directionVectorX = new Vector3(directionVector.x, 0f, 0f);
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * charHeight, charRadius, directionVectorX, moveDistance);
+            canMove = !Physics.BoxCast(transform.position, Vector3.one * charRadius, directionVectorX, Quaternion.identity, moveDistance, collistionsLayerMask);
 
             if (canMove && directionVectorX != Vector3.zero)
             {
@@ -98,7 +114,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
             else
             {
                 Vector3 directionVectorZ = new Vector3(0f, 0f, directionVector.z);
-                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * charHeight, charRadius, directionVectorZ, moveDistance);
+                canMove = !Physics.BoxCast(transform.position, Vector3.one * charRadius, directionVectorZ, Quaternion.identity, moveDistance, collistionsLayerMask);
                 if (canMove && directionVectorZ != Vector3.zero)
                 {
                     directionVector = directionVectorZ;
@@ -162,7 +178,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
 
         if (kitchenObject != null)
         {
-            OnPickupSomething?.Invoke(this, EventArgs.Empty);
+            OnPickupSomething?.Invoke();
         }
     }
 

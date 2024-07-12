@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8476254706829590448}
   - component: {fileID: 911651229189708583}
   - component: {fileID: 7826251189233811947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrashCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
