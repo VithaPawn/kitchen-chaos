@@ -9,7 +9,6 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
     [SerializeField] private LayerMask collistionsLayerMask;
     [SerializeField] private List<Vector3> spawnPositionList;
 
-    private readonly float charHeight = 1f;
     private readonly float charRadius = 0.7f;
     private readonly int rotationSpeed = 15;
     private readonly float interactDistance = 1f;
@@ -42,6 +41,19 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
         {
             transform.position = spawnPositionList[(int)OwnerClientId];
         }
+
+        if (IsServer)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+        }
+    }
+
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        if (clientId == OwnerClientId && HasCurrentKitchenObject())
+        {
+            KitchenObject.DestroyKitchenObject(GetCurrentKitchenObject());
+        }
     }
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
@@ -68,8 +80,11 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
         if (!GameHandler.Instance.IsGamePlaying()) return;
         if (!IsOwner) return;
         inputVector = GameInput.Instance.GetInputVectorNormalized();
-        HandleMovement();
-        HandleInteraction();
+        if (Time.timeScale > 0)
+        {
+            HandleMovement();
+            HandleInteraction();
+        }
     }
 
     private void HandleMovement()

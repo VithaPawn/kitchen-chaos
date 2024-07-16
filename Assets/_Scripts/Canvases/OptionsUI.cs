@@ -98,11 +98,11 @@ public class OptionsUI : MonoBehaviour {
         UpdateSoundEffectsButtonUI();
         UpdateMusicButtonUI();
         UpdateBindingsUI();
-        GameHandler.Instance.OnUnpauseGame += GameHandler_OnUnpauseGame;
+        GameHandler.Instance.OnLocalUnpauseGame += GameHandler_OnUnpauseGame;
         Hide();
     }
 
-    private void GameHandler_OnUnpauseGame(object sender, System.EventArgs e)
+    private void GameHandler_OnUnpauseGame()
     {
         Hide();
     }
@@ -130,13 +130,19 @@ public class OptionsUI : MonoBehaviour {
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        foreach (Transform childTransform in transform)
+        {
+            childTransform.gameObject.SetActive(true);
+        }
 
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        foreach (Transform childTransform in transform)
+        {
+            childTransform.gameObject.SetActive(false);
+        }
     }
 
     private void ShowRebindNotificationUI()

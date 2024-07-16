@@ -15,16 +15,16 @@ public class TutorialUI : MonoBehaviour {
     private void Start()
     {
         GameInput.Instance.OnRebindBinding += GameInput_OnRebindBinding;
-        GameHandler.Instance.OnStateChanged += GameHandler_OnStateChanged;
+        GameHandler.Instance.OnLocalPlayerReadyChanged += Instance_OnLocalPlayerReadyChanged;
 
         UpdateVisual();
 
-        Hide();
+        Show();
     }
 
-    private void GameHandler_OnStateChanged(object sender, System.EventArgs e)
+    private void Instance_OnLocalPlayerReadyChanged()
     {
-        if (GameHandler.Instance.IsCountdownForStartTimerActive())
+        if (GameHandler.Instance.IsLocalPlayerReady())
         {
             Hide();
         }

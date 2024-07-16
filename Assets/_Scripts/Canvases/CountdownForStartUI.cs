@@ -13,12 +13,13 @@ public class CountdownForStartUI : MonoBehaviour {
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        Hide();
     }
 
     private void Start()
     {
         GameHandler.Instance.OnStateChanged += GameHandler_OnStateChanged;
+
+        Hide();
     }
 
     private void Update()
