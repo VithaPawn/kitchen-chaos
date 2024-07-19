@@ -64,7 +64,7 @@ public class GameHandler : NetworkBehaviour {
     public override void OnNetworkSpawn()
     {
         state.OnValueChanged += State_OnValueChanged;
-        isMultiplayerPauseGame.OnValueChanged += isMultiplayerPauseGame_OnValueChanged;
+        isMultiplayerPauseGame.OnValueChanged += IsMultiplayerPauseGame_OnValueChanged;
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
@@ -73,7 +73,7 @@ public class GameHandler : NetworkBehaviour {
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
-        clientDisconnectedState = true;
+            clientDisconnectedState = true;
     }
 
     private void State_OnValueChanged(State previousValue, State newValue)
@@ -81,7 +81,7 @@ public class GameHandler : NetworkBehaviour {
         OnStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    private void isMultiplayerPauseGame_OnValueChanged(bool previousValue, bool newValue)
+    private void IsMultiplayerPauseGame_OnValueChanged(bool previousValue, bool newValue)
     {
         if (isMultiplayerPauseGame.Value)
         {

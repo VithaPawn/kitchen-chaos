@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ServerDisconnectedCanvas : MonoBehaviour {
+public class ServerDisconnectedCanvas : NetworkBehaviour {
     [SerializeField] private Button returnHomeButton;
 
     private void Start()
@@ -13,24 +13,23 @@ public class ServerDisconnectedCanvas : MonoBehaviour {
             Loader.Load(Loader.Scene.MainMenuScene);
         });
 
-        NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectedCallback;
-
         Hide();
     }
 
-
-    private void OnDestroy()
+    public override void OnNetworkSpawn()
     {
-        NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManager_OnClientDisconnectedCallback;
+        NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
     }
 
-    private void NetworkManager_OnClientDisconnectedCallback(ulong clientId)
+    public override void OnNetworkDespawn()
     {
-        Debug.Log("clientId: " + clientId);
-        Debug.Log("ServerClientId: " + NetworkManager.ServerClientId);
-        if (clientId == NetworkManager.ServerClientId)
+        NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManager_OnClientDisconnectCallback;
+    }
+
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        if (clientId == NetworkManager.LocalClientId)
         {
-            Debug.Log("ServerDisconnected!!!");
             Show();
         }
     }
