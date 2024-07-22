@@ -13,11 +13,11 @@ public class TestingNetcodeCanvas : MonoBehaviour
 
         hostBtn.onClick.AddListener(() =>
         {
-            NetworkManager.Singleton.StartHost();
+            KitchenGameMultiplayer.Instance.StartHost();
             Hide();
         });
-        clientBtn.onClick.AddListener(() => { 
-            NetworkManager.Singleton.StartClient();
+        clientBtn.onClick.AddListener(() => {
+            KitchenGameMultiplayer.Instance.StartClient();
             Hide();
         });
     }
