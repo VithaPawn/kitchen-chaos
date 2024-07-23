@@ -1,4 +1,3 @@
-using System;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -19,13 +18,15 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
         }
     }
 
-    public void StartHost() {
+    public void StartHost()
+    {
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
         NetworkManager.Singleton.StartHost();
     }
 
 
-    public void StartClient() {
+    public void StartClient()
+    {
         NetworkManager.Singleton.StartClient();
     }
     private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
@@ -34,7 +35,8 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
         {
             response.Approved = true;
             response.CreatePlayerObject = true;
-        } else
+        }
+        else
         {
             response.Approved = false;
         }
@@ -45,7 +47,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
         SpawnKitchenObjectServerRpc(GetIndexOfKitchenObjectSO(kitchenObjectSO), kitchenObjectParent.GetNetworkObject());
     }
 
-    [ServerRpc (RequireOwnership = false)]
+    [ServerRpc(RequireOwnership = false)]
     private void SpawnKitchenObjectServerRpc(int kitchenObjectSOIndex, NetworkObjectReference kitchenObjectParentNetworkObjectReference)
     {
         // Spawn kitchen objects 
@@ -81,7 +83,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour {
         DestroyKitchenObjectServerRpc(kitchenObject.NetworkObject);
     }
 
-    [ServerRpc (RequireOwnership = false)]
+    [ServerRpc(RequireOwnership = false)]
     private void DestroyKitchenObjectServerRpc(NetworkObjectReference kitchenObjectReference)
     {
         kitchenObjectReference.TryGet(out NetworkObject kitchenObjectNetworkObject);
